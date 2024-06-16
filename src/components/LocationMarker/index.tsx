@@ -5,10 +5,11 @@ import Leaflet from "leaflet";
 
  const icon = Leaflet.icon({
     iconUrl: mapPin,
-    iconSize: [58, 68],
-    iconAnchor: [29, 68],
-    popupAnchor: [170, 2],
+    iconSize: [40, 40],
+    iconAnchor: [20, 45],
+    popupAnchor: [0, -40],
   });
+
 
 export function LocationMarker() {
   const [position, setPosition] = useState(null);
@@ -21,13 +22,14 @@ export function LocationMarker() {
       map.flyTo(e.latlng, map.getZoom());
       console.log(e);
       const radius = e.accuracy;
-      const circle = L.circle(e.latlng, radius);
+      const circle = Leaflet.circle(e.latlng, radius);
+      console.log(circle)
       circle.addTo(map);
     });
   }, [map]);
 
   return position === null ? null : (
-    <Marker position={position} icon={icon}>
+    <Marker position={position} icon={icon} title="teste">
       <Popup>
         You are here.
       </Popup>
