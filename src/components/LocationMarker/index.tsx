@@ -12,7 +12,7 @@ import Leaflet from "leaflet";
 
 
 export function LocationMarker() {
-  const [position, setPosition] = useState(null);
+  const [position, setPosition] = useState<Leaflet.LatLng | null>(null);
 
   const map = useMap();
 
